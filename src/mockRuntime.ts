@@ -451,11 +451,11 @@ export class MockRuntime extends EventEmitter {
 		return instructions;
 	}
 
-	// private methods
-
-	private getLine(line?: number): string {
+	getLine(line?: number): string {
 		return this.sourceLines[line === undefined ? this.currentLine : line].trim();
 	}
+
+	// private methods
 
 	private getWords(l: number, line: string): Word[] {
 		// break line into words

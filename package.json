@@ -74,6 +74,14 @@
     "request": "never"
   },
   "contributes": {
+    "views": {
+      "debug": [
+        {
+          "id": "characterAnalysis",
+          "name": "Character Analysis"
+        }
+      ]
+    },
     "menus": {
       "editor/title/run": [
         {

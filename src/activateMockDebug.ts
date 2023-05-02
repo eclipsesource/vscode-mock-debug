@@ -11,6 +11,7 @@ import * as vscode from 'vscode';
 import { WorkspaceFolder, DebugConfiguration, ProviderResult, CancellationToken } from 'vscode';
 import { MockDebugSession } from './mockDebug';
 import { FileAccessor } from './mockRuntime';
+import { CharacterAnalysisProvider } from './characterAnalysisProvider';
 
 export function activateMockDebug(context: vscode.ExtensionContext, factory?: vscode.DebugAdapterDescriptorFactory) {
 
@@ -150,6 +151,9 @@ export function activateMockDebug(context: vscode.ExtensionContext, factory?: vs
 			return allValues;
 		}
 	}));
+
+	const characterAnalysisProvider = new CharacterAnalysisProvider(context);;
+	vscode.window.registerTreeDataProvider('characterAnalysis', characterAnalysisProvider);
 }
 
 class MockConfigurationProvider implements vscode.DebugConfigurationProvider {
