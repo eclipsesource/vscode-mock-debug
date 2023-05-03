@@ -363,12 +363,16 @@ export class MockDebugSession extends LoggingDebugSession {
 	}
 
 	protected threadsRequest(response: DebugProtocol.ThreadsResponse): void {
-
 		// runtime supports no threads so just return a default thread.
 		response.body = {
 			threads: [
 				new Thread(MockDebugSession.threadID, "thread 1"),
-				new Thread(MockDebugSession.threadID + 1, "thread 2"),
+				new Thread(MockDebugSession.threadID + 1, "thread 1/A"),
+				new Thread(MockDebugSession.threadID + 2, "thread 1/A/a"),
+				new Thread(MockDebugSession.threadID + 3, "thread 1/A/b"),
+				new Thread(MockDebugSession.threadID + 4, "thread 1/B"),
+				new Thread(MockDebugSession.threadID + 5, "thread 1/Bc"),
+				new Thread(MockDebugSession.threadID + 5, "thread 2"),
 			]
 		};
 		this.sendResponse(response);
